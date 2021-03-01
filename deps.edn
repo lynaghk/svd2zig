@@ -1,0 +1,4 @@
+{:deps {lonocloud/synthread {:mvn/version "1.0.4"}
+        org.clojure/core.match {:mvn/version "1.0.0"}
+        org.clojure/data.zip {:mvn/version "1.0.0"}
+        org.clojure/data.xml {:mvn/version "0.2.0-alpha6"}}}
