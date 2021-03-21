@@ -190,11 +190,12 @@
                      (= access "write-only")
                      (str "RegisterRW(" "void, " type-name ")")
 
-                     (and (= access "read-write") separate-read-write-types?)
+                     (and (or (nil? access) (= access "read-write")) separate-read-write-types?)
                      (str "RegisterRW(" type-name "_read, " type-name "_write)")
 
-                     (and (= access "read-write") (not separate-read-write-types?))
+                     (and (or (nil? access) (= access "read-write")) (not separate-read-write-types?))
                      (str "Register(" type-name ")"))
+
 
                    (if (and dim dimIncrement)
                      (let [dim (hex->int dim)
