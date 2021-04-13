@@ -40,5 +40,5 @@ The API and generation script assumes 32-bit word size and likely contains bugs 
 Read the [300 lines of source](generate_registers.clj) and decide for yourself.
 It's written in Clojure because...hahaha I'm not going to try parsing XML in Zig =P
 
-Run `./make.sh` to download SVD files to `vendor/` and generate formatted Zig definitions for every SVD found in that directory.
+Run `./build.sh` to download SVD files to `vendor/` and generate formatted Zig definitions for every SVD found in that directory.
 You'll need `clojure` and `zig` on your path.
