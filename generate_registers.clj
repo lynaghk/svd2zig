@@ -14,7 +14,7 @@
 
 (defn hex->int
   [s]
-  (Long/parseLong (str/replace s #"^0x" "") 16))
+  (Long/parseLong (str/replace s #"^0(x|X)" "") 16))
 
 
 ;;SVD format description:
@@ -45,7 +45,7 @@
                       :enumeratedValue)]
          (-> (select-children-tag-content e [:name :description :value])
              (update :value (fn [s]
-                              (if (.startsWith s "0x")
+                              (if (re-matches #"^0(x|X)" s)
                                 s
                                 (Integer/parseInt s))))))))
 
@@ -155,9 +155,12 @@
         (let [register-name (->identifier name)
               type-name (str register-name "_val")
               separate-read-write-types? (not (empty? (mapcat :enums-read fields)))
-              register-size-bits (if dimIncrement
-                                   (* 8 (hex->int dimIncrement))
-                                   default-register-size-bits)
+              register-size-bits (match [(some-> dimIncrement
+                                                 hex->int)]
+                                   [nil] default-register-size-bits
+                                   ;;why some manufacturers specify dimIncrement 0 is beyond me
+                                   [0]   default-register-size-bits
+                                   [increment] (* 8 increment))
               register-reset-value (some-> resetValue
                                            hex->int)]
 
@@ -262,7 +265,7 @@
                                      :enums-write (enums-by-usage f "write")
                                      :enums (or (enums-by-usage f "read-write")
                                                 (enums-by-usage f nil))})))]
-
+                  ;;TODO: expand derivations for enums; see `<enumeratedValues derivedFrom="DMAEN" />` in stm32f0
                   {:fields (expand-derivations fields)})))))
 
 
