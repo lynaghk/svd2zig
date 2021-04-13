@@ -8158,10 +8158,10 @@ pub const radio = struct {
 
     //////////////////////////
     ///EVENTS_CRCERROR
-    const events_crc_error_val = packed struct {
+    const events_crcerror_val = packed struct {
         ///EVENTS_CRCERROR [0:0]
         ///Packet received with CRC error
-        events_crc_error: packed enum(u1) {
+        events_crcerror: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -8170,7 +8170,7 @@ pub const radio = struct {
         _unused1: u31 = 0,
     };
     ///Packet received with CRC error
-    pub const events_crc_error = Register(events_crc_error_val).init(0x40001000 + 0x134);
+    pub const events_crcerror = Register(events_crcerror_val).init(0x40001000 + 0x134);
 
     //////////////////////////
     ///EVENTS_FRAMESTART
@@ -8613,7 +8613,7 @@ pub const radio = struct {
         } = .disabled,
         ///CRCERROR [13:13]
         ///Write '1' to enable interrupt for event CRCERROR
-        crc_error: packed enum(u1) {
+        crcerror: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -8793,7 +8793,7 @@ pub const radio = struct {
         } = ._zero,
         ///CRCERROR [13:13]
         ///Write '1' to enable interrupt for event CRCERROR
-        crc_error: packed enum(u1) {
+        crcerror: packed enum(u1) {
             ///Enable
             set = 1,
             _zero = 0,
@@ -8975,7 +8975,7 @@ pub const radio = struct {
         } = .disabled,
         ///CRCERROR [13:13]
         ///Write '1' to disable interrupt for event CRCERROR
-        crc_error: packed enum(u1) {
+        crcerror: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -9155,7 +9155,7 @@ pub const radio = struct {
         } = ._zero,
         ///CRCERROR [13:13]
         ///Write '1' to disable interrupt for event CRCERROR
-        crc_error: packed enum(u1) {
+        crcerror: packed enum(u1) {
             ///Disable
             clear = 1,
             _zero = 0,
@@ -9257,10 +9257,10 @@ pub const radio = struct {
         ///CRC status of packet received
         crcstatus: packed enum(u1) {
             ///Packet received with CRC error
-            crc_error = 0,
+            crcerror = 0,
             ///Packet received with CRC ok
             crcok = 1,
-        } = .crc_error,
+        } = .crcerror,
         _unused1: u31 = 0,
     };
     ///CRC status
@@ -10088,10 +10088,10 @@ pub const uart0 = struct {
 
     //////////////////////////
     ///TASKS_SUSPEND
-    const tasks__suspend_val = packed struct {
+    const tasks_suspend_val = packed struct {
         ///TASKS_SUSPEND [0:0]
         ///Suspend UART
-        tasks__suspend: packed enum(u1) {
+        tasks_suspend: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -10099,7 +10099,7 @@ pub const uart0 = struct {
         _unused1: u31 = 0,
     };
     ///Suspend UART
-    pub const tasks__suspend = RegisterRW(void, tasks__suspend_val).init(0x40002000 + 0x01C);
+    pub const tasks_suspend = RegisterRW(void, tasks_suspend_val).init(0x40002000 + 0x01C);
 
     //////////////////////////
     ///EVENTS_CTS
@@ -10167,10 +10167,10 @@ pub const uart0 = struct {
 
     //////////////////////////
     ///EVENTS_ERROR
-    const events__error_val = packed struct {
+    const events_error_val = packed struct {
         ///EVENTS_ERROR [0:0]
         ///Error detected
-        events__error: packed enum(u1) {
+        events_error: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -10179,7 +10179,7 @@ pub const uart0 = struct {
         _unused1: u31 = 0,
     };
     ///Error detected
-    pub const events__error = Register(events__error_val).init(0x40002000 + 0x124);
+    pub const events_error = Register(events_error_val).init(0x40002000 + 0x124);
 
     //////////////////////////
     ///EVENTS_RXTO
@@ -10438,7 +10438,7 @@ pub const uart0 = struct {
 
     //////////////////////////
     ///ERRORSRC
-    const _errorsrc_val_read = packed struct {
+    const errorsrc_val_read = packed struct {
         ///OVERRUN [0:0]
         ///Overrun error
         overrun: packed enum(u1) {
@@ -10473,7 +10473,7 @@ pub const uart0 = struct {
         } = .not_present,
         _unused4: u28 = 0,
     };
-    const _errorsrc_val_write = packed struct {
+    const errorsrc_val_write = packed struct {
         ///OVERRUN [0:0]
         ///Overrun error
         overrun: u1 = 0,
@@ -10489,7 +10489,7 @@ pub const uart0 = struct {
         _unused4: u28 = 0,
     };
     ///Error source
-    pub const _errorsrc = RegisterRW(_errorsrc_val_read, _errorsrc_val_write).init(0x40002000 + 0x480);
+    pub const errorsrc = RegisterRW(errorsrc_val_read, errorsrc_val_write).init(0x40002000 + 0x480);
 
     //////////////////////////
     ///ENABLE
@@ -10787,10 +10787,10 @@ pub const uarte0 = struct {
 
     //////////////////////////
     ///EVENTS_ERROR
-    const events__error_val = packed struct {
+    const events_error_val = packed struct {
         ///EVENTS_ERROR [0:0]
         ///Error detected
-        events__error: packed enum(u1) {
+        events_error: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -10799,7 +10799,7 @@ pub const uarte0 = struct {
         _unused1: u31 = 0,
     };
     ///Error detected
-    pub const events__error = Register(events__error_val).init(0x40002000 + 0x124);
+    pub const events_error = Register(events_error_val).init(0x40002000 + 0x124);
 
     //////////////////////////
     ///EVENTS_RXTO
@@ -11365,7 +11365,7 @@ pub const uarte0 = struct {
 
     //////////////////////////
     ///ERRORSRC
-    const _errorsrc_val_read = packed struct {
+    const errorsrc_val_read = packed struct {
         ///OVERRUN [0:0]
         ///Overrun error
         overrun: packed enum(u1) {
@@ -11400,7 +11400,7 @@ pub const uarte0 = struct {
         } = .not_present,
         _unused4: u28 = 0,
     };
-    const _errorsrc_val_write = packed struct {
+    const errorsrc_val_write = packed struct {
         ///OVERRUN [0:0]
         ///Overrun error
         overrun: u1 = 0,
@@ -11416,7 +11416,7 @@ pub const uarte0 = struct {
         _unused4: u28 = 0,
     };
     ///Error source Note : this register is read / write one to clear.
-    pub const _errorsrc = RegisterRW(_errorsrc_val_read, _errorsrc_val_write).init(0x40002000 + 0x480);
+    pub const errorsrc = RegisterRW(errorsrc_val_read, errorsrc_val_write).init(0x40002000 + 0x480);
 
     //////////////////////////
     ///ENABLE
@@ -11723,10 +11723,10 @@ pub const spim0 = struct {
 
     //////////////////////////
     ///TASKS_SUSPEND
-    const tasks__suspend_val = packed struct {
+    const tasks_suspend_val = packed struct {
         ///TASKS_SUSPEND [0:0]
         ///Suspend SPI transaction
-        tasks__suspend: packed enum(u1) {
+        tasks_suspend: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -11734,14 +11734,14 @@ pub const spim0 = struct {
         _unused1: u31 = 0,
     };
     ///Suspend SPI transaction
-    pub const tasks__suspend = RegisterRW(void, tasks__suspend_val).init(0x40003000 + 0x01C);
+    pub const tasks_suspend = RegisterRW(void, tasks_suspend_val).init(0x40003000 + 0x01C);
 
     //////////////////////////
     ///TASKS_RESUME
-    const tasks__resume_val = packed struct {
+    const tasks_resume_val = packed struct {
         ///TASKS_RESUME [0:0]
         ///Resume SPI transaction
-        tasks__resume: packed enum(u1) {
+        tasks_resume: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -11749,7 +11749,7 @@ pub const spim0 = struct {
         _unused1: u31 = 0,
     };
     ///Resume SPI transaction
-    pub const tasks__resume = RegisterRW(void, tasks__resume_val).init(0x40003000 + 0x020);
+    pub const tasks_resume = RegisterRW(void, tasks_resume_val).init(0x40003000 + 0x020);
 
     //////////////////////////
     ///EVENTS_STOPPED
@@ -12607,10 +12607,10 @@ pub const twi0 = struct {
 
     //////////////////////////
     ///TASKS_SUSPEND
-    const tasks__suspend_val = packed struct {
+    const tasks_suspend_val = packed struct {
         ///TASKS_SUSPEND [0:0]
         ///Suspend TWI transaction
-        tasks__suspend: packed enum(u1) {
+        tasks_suspend: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -12618,14 +12618,14 @@ pub const twi0 = struct {
         _unused1: u31 = 0,
     };
     ///Suspend TWI transaction
-    pub const tasks__suspend = RegisterRW(void, tasks__suspend_val).init(0x40003000 + 0x01C);
+    pub const tasks_suspend = RegisterRW(void, tasks_suspend_val).init(0x40003000 + 0x01C);
 
     //////////////////////////
     ///TASKS_RESUME
-    const tasks__resume_val = packed struct {
+    const tasks_resume_val = packed struct {
         ///TASKS_RESUME [0:0]
         ///Resume TWI transaction
-        tasks__resume: packed enum(u1) {
+        tasks_resume: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -12633,7 +12633,7 @@ pub const twi0 = struct {
         _unused1: u31 = 0,
     };
     ///Resume TWI transaction
-    pub const tasks__resume = RegisterRW(void, tasks__resume_val).init(0x40003000 + 0x020);
+    pub const tasks_resume = RegisterRW(void, tasks_resume_val).init(0x40003000 + 0x020);
 
     //////////////////////////
     ///EVENTS_STOPPED
@@ -12685,10 +12685,10 @@ pub const twi0 = struct {
 
     //////////////////////////
     ///EVENTS_ERROR
-    const events__error_val = packed struct {
+    const events_error_val = packed struct {
         ///EVENTS_ERROR [0:0]
         ///TWI error
-        events__error: packed enum(u1) {
+        events_error: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -12697,7 +12697,7 @@ pub const twi0 = struct {
         _unused1: u31 = 0,
     };
     ///TWI error
-    pub const events__error = Register(events__error_val).init(0x40003000 + 0x124);
+    pub const events_error = Register(events_error_val).init(0x40003000 + 0x124);
 
     //////////////////////////
     ///EVENTS_BB
@@ -12717,10 +12717,10 @@ pub const twi0 = struct {
 
     //////////////////////////
     ///EVENTS_SUSPENDED
-    const events__suspended_val = packed struct {
+    const events_suspended_val = packed struct {
         ///EVENTS_SUSPENDED [0:0]
         ///TWI entered the suspended state
-        events__suspended: packed enum(u1) {
+        events_suspended: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -12729,14 +12729,14 @@ pub const twi0 = struct {
         _unused1: u31 = 0,
     };
     ///TWI entered the suspended state
-    pub const events__suspended = Register(events__suspended_val).init(0x40003000 + 0x148);
+    pub const events_suspended = Register(events_suspended_val).init(0x40003000 + 0x148);
 
     //////////////////////////
     ///SHORTS
     const shorts_val = packed struct {
         ///BB_SUSPEND [0:0]
         ///Shortcut between event BB and task SUSPEND
-        bb__suspend: packed enum(u1) {
+        bb_suspend: packed enum(u1) {
             ///Disable shortcut
             disabled = 0,
             ///Enable shortcut
@@ -12805,7 +12805,7 @@ pub const twi0 = struct {
         _unused15: u3 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to enable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -12856,7 +12856,7 @@ pub const twi0 = struct {
         _unused15: u3 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to enable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Enable
             set = 1,
             _zero = 0,
@@ -12916,7 +12916,7 @@ pub const twi0 = struct {
         _unused15: u3 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to disable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -12967,7 +12967,7 @@ pub const twi0 = struct {
         _unused15: u3 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to disable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Disable
             clear = 1,
             _zero = 0,
@@ -12979,7 +12979,7 @@ pub const twi0 = struct {
 
     //////////////////////////
     ///ERRORSRC
-    const _errorsrc_val_read = packed struct {
+    const errorsrc_val_read = packed struct {
         ///OVERRUN [0:0]
         ///Overrun error
         overrun: packed enum(u1) {
@@ -13006,7 +13006,7 @@ pub const twi0 = struct {
         } = .not_present,
         _unused3: u29 = 0,
     };
-    const _errorsrc_val_write = packed struct {
+    const errorsrc_val_write = packed struct {
         ///OVERRUN [0:0]
         ///Overrun error
         overrun: u1 = 0,
@@ -13019,7 +13019,7 @@ pub const twi0 = struct {
         _unused3: u29 = 0,
     };
     ///Error source
-    pub const _errorsrc = RegisterRW(_errorsrc_val_read, _errorsrc_val_write).init(0x40003000 + 0x4C4);
+    pub const errorsrc = RegisterRW(errorsrc_val_read, errorsrc_val_write).init(0x40003000 + 0x4C4);
 
     //////////////////////////
     ///ENABLE
@@ -13139,10 +13139,10 @@ pub const twim0 = struct {
 
     //////////////////////////
     ///TASKS_SUSPEND
-    const tasks__suspend_val = packed struct {
+    const tasks_suspend_val = packed struct {
         ///TASKS_SUSPEND [0:0]
         ///Suspend TWI transaction
-        tasks__suspend: packed enum(u1) {
+        tasks_suspend: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -13150,14 +13150,14 @@ pub const twim0 = struct {
         _unused1: u31 = 0,
     };
     ///Suspend TWI transaction
-    pub const tasks__suspend = RegisterRW(void, tasks__suspend_val).init(0x40003000 + 0x01C);
+    pub const tasks_suspend = RegisterRW(void, tasks_suspend_val).init(0x40003000 + 0x01C);
 
     //////////////////////////
     ///TASKS_RESUME
-    const tasks__resume_val = packed struct {
+    const tasks_resume_val = packed struct {
         ///TASKS_RESUME [0:0]
         ///Resume TWI transaction
-        tasks__resume: packed enum(u1) {
+        tasks_resume: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -13165,7 +13165,7 @@ pub const twim0 = struct {
         _unused1: u31 = 0,
     };
     ///Resume TWI transaction
-    pub const tasks__resume = RegisterRW(void, tasks__resume_val).init(0x40003000 + 0x020);
+    pub const tasks_resume = RegisterRW(void, tasks_resume_val).init(0x40003000 + 0x020);
 
     //////////////////////////
     ///EVENTS_STOPPED
@@ -13185,10 +13185,10 @@ pub const twim0 = struct {
 
     //////////////////////////
     ///EVENTS_ERROR
-    const events__error_val = packed struct {
+    const events_error_val = packed struct {
         ///EVENTS_ERROR [0:0]
         ///TWI error
-        events__error: packed enum(u1) {
+        events_error: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -13197,14 +13197,14 @@ pub const twim0 = struct {
         _unused1: u31 = 0,
     };
     ///TWI error
-    pub const events__error = Register(events__error_val).init(0x40003000 + 0x124);
+    pub const events_error = Register(events_error_val).init(0x40003000 + 0x124);
 
     //////////////////////////
     ///EVENTS_SUSPENDED
-    const events__suspended_val = packed struct {
+    const events_suspended_val = packed struct {
         ///EVENTS_SUSPENDED [0:0]
         ///Last byte has been sent out after the SUSPEND task has been issued, TWI traffic is now suspended.
-        events__suspended: packed enum(u1) {
+        events_suspended: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -13213,7 +13213,7 @@ pub const twim0 = struct {
         _unused1: u31 = 0,
     };
     ///Last byte has been sent out after the SUSPEND task has been issued, TWI traffic is now suspended.
-    pub const events__suspended = Register(events__suspended_val).init(0x40003000 + 0x148);
+    pub const events_suspended = Register(events_suspended_val).init(0x40003000 + 0x148);
 
     //////////////////////////
     ///EVENTS_RXSTARTED
@@ -13293,7 +13293,7 @@ pub const twim0 = struct {
         } = .disabled,
         ///LASTTX_SUSPEND [8:8]
         ///Shortcut between event LASTTX and task SUSPEND
-        lasttx__suspend: packed enum(u1) {
+        lasttx_suspend: packed enum(u1) {
             ///Disable shortcut
             disabled = 0,
             ///Enable shortcut
@@ -13317,7 +13317,7 @@ pub const twim0 = struct {
         } = .disabled,
         ///LASTRX_SUSPEND [11:11]
         ///Shortcut between event LASTRX and task SUSPEND
-        lastrx__suspend: packed enum(u1) {
+        lastrx_suspend: packed enum(u1) {
             ///Disable shortcut
             disabled = 0,
             ///Enable shortcut
@@ -13360,7 +13360,7 @@ pub const twim0 = struct {
         _unused10: u8 = 0,
         ///SUSPENDED [18:18]
         ///Enable or disable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Disable
             disabled = 0,
             ///Enable
@@ -13428,7 +13428,7 @@ pub const twim0 = struct {
         _unused10: u8 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to enable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -13489,7 +13489,7 @@ pub const twim0 = struct {
         _unused10: u8 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to enable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Enable
             set = 1,
             _zero = 0,
@@ -13552,7 +13552,7 @@ pub const twim0 = struct {
         _unused10: u8 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to disable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -13613,7 +13613,7 @@ pub const twim0 = struct {
         _unused10: u8 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to disable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Disable
             clear = 1,
             _zero = 0,
@@ -13654,7 +13654,7 @@ pub const twim0 = struct {
 
     //////////////////////////
     ///ERRORSRC
-    const _errorsrc_val = packed struct {
+    const errorsrc_val = packed struct {
         ///OVERRUN [0:0]
         ///Overrun error
         overrun: packed enum(u1) {
@@ -13682,7 +13682,7 @@ pub const twim0 = struct {
         _unused3: u29 = 0,
     };
     ///Error source
-    pub const _errorsrc = Register(_errorsrc_val).init(0x40003000 + 0x4C4);
+    pub const errorsrc = Register(errorsrc_val).init(0x40003000 + 0x4C4);
 
     //////////////////////////
     ///ENABLE
@@ -13750,10 +13750,10 @@ pub const twis0 = struct {
 
     //////////////////////////
     ///TASKS_SUSPEND
-    const tasks__suspend_val = packed struct {
+    const tasks_suspend_val = packed struct {
         ///TASKS_SUSPEND [0:0]
         ///Suspend TWI transaction
-        tasks__suspend: packed enum(u1) {
+        tasks_suspend: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -13761,14 +13761,14 @@ pub const twis0 = struct {
         _unused1: u31 = 0,
     };
     ///Suspend TWI transaction
-    pub const tasks__suspend = RegisterRW(void, tasks__suspend_val).init(0x40003000 + 0x01C);
+    pub const tasks_suspend = RegisterRW(void, tasks_suspend_val).init(0x40003000 + 0x01C);
 
     //////////////////////////
     ///TASKS_RESUME
-    const tasks__resume_val = packed struct {
+    const tasks_resume_val = packed struct {
         ///TASKS_RESUME [0:0]
         ///Resume TWI transaction
-        tasks__resume: packed enum(u1) {
+        tasks_resume: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -13776,7 +13776,7 @@ pub const twis0 = struct {
         _unused1: u31 = 0,
     };
     ///Resume TWI transaction
-    pub const tasks__resume = RegisterRW(void, tasks__resume_val).init(0x40003000 + 0x020);
+    pub const tasks_resume = RegisterRW(void, tasks_resume_val).init(0x40003000 + 0x020);
 
     //////////////////////////
     ///TASKS_PREPARERX
@@ -13826,10 +13826,10 @@ pub const twis0 = struct {
 
     //////////////////////////
     ///EVENTS_ERROR
-    const events__error_val = packed struct {
+    const events_error_val = packed struct {
         ///EVENTS_ERROR [0:0]
         ///TWI error
-        events__error: packed enum(u1) {
+        events_error: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -13838,7 +13838,7 @@ pub const twis0 = struct {
         _unused1: u31 = 0,
     };
     ///TWI error
-    pub const events__error = Register(events__error_val).init(0x40003000 + 0x124);
+    pub const events_error = Register(events_error_val).init(0x40003000 + 0x124);
 
     //////////////////////////
     ///EVENTS_RXSTARTED
@@ -13910,7 +13910,7 @@ pub const twis0 = struct {
         _unused0: u13 = 0,
         ///WRITE_SUSPEND [13:13]
         ///Shortcut between event WRITE and task SUSPEND
-        write__suspend: packed enum(u1) {
+        write_suspend: packed enum(u1) {
             ///Disable shortcut
             disabled = 0,
             ///Enable shortcut
@@ -13918,7 +13918,7 @@ pub const twis0 = struct {
         } = .disabled,
         ///READ_SUSPEND [14:14]
         ///Shortcut between event READ and task SUSPEND
-        read__suspend: packed enum(u1) {
+        read_suspend: packed enum(u1) {
             ///Disable shortcut
             disabled = 0,
             ///Enable shortcut
@@ -14209,7 +14209,7 @@ pub const twis0 = struct {
 
     //////////////////////////
     ///ERRORSRC
-    const _errorsrc_val = packed struct {
+    const errorsrc_val = packed struct {
         ///OVERFLOW [0:0]
         ///RX buffer overflow detected, and prevented
         overflow: packed enum(u1) {
@@ -14238,7 +14238,7 @@ pub const twis0 = struct {
         _unused4: u28 = 0,
     };
     ///Error source
-    pub const _errorsrc = Register(_errorsrc_val).init(0x40003000 + 0x4D0);
+    pub const errorsrc = Register(errorsrc_val).init(0x40003000 + 0x4D0);
 
     //////////////////////////
     ///MATCH
@@ -14521,10 +14521,10 @@ pub const spim1 = struct {
 
     //////////////////////////
     ///TASKS_SUSPEND
-    const tasks__suspend_val = packed struct {
+    const tasks_suspend_val = packed struct {
         ///TASKS_SUSPEND [0:0]
         ///Suspend SPI transaction
-        tasks__suspend: packed enum(u1) {
+        tasks_suspend: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -14532,14 +14532,14 @@ pub const spim1 = struct {
         _unused1: u31 = 0,
     };
     ///Suspend SPI transaction
-    pub const tasks__suspend = RegisterRW(void, tasks__suspend_val).init(0x40004000 + 0x01C);
+    pub const tasks_suspend = RegisterRW(void, tasks_suspend_val).init(0x40004000 + 0x01C);
 
     //////////////////////////
     ///TASKS_RESUME
-    const tasks__resume_val = packed struct {
+    const tasks_resume_val = packed struct {
         ///TASKS_RESUME [0:0]
         ///Resume SPI transaction
-        tasks__resume: packed enum(u1) {
+        tasks_resume: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -14547,7 +14547,7 @@ pub const spim1 = struct {
         _unused1: u31 = 0,
     };
     ///Resume SPI transaction
-    pub const tasks__resume = RegisterRW(void, tasks__resume_val).init(0x40004000 + 0x020);
+    pub const tasks_resume = RegisterRW(void, tasks_resume_val).init(0x40004000 + 0x020);
 
     //////////////////////////
     ///EVENTS_STOPPED
@@ -15405,10 +15405,10 @@ pub const twi1 = struct {
 
     //////////////////////////
     ///TASKS_SUSPEND
-    const tasks__suspend_val = packed struct {
+    const tasks_suspend_val = packed struct {
         ///TASKS_SUSPEND [0:0]
         ///Suspend TWI transaction
-        tasks__suspend: packed enum(u1) {
+        tasks_suspend: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -15416,14 +15416,14 @@ pub const twi1 = struct {
         _unused1: u31 = 0,
     };
     ///Suspend TWI transaction
-    pub const tasks__suspend = RegisterRW(void, tasks__suspend_val).init(0x40004000 + 0x01C);
+    pub const tasks_suspend = RegisterRW(void, tasks_suspend_val).init(0x40004000 + 0x01C);
 
     //////////////////////////
     ///TASKS_RESUME
-    const tasks__resume_val = packed struct {
+    const tasks_resume_val = packed struct {
         ///TASKS_RESUME [0:0]
         ///Resume TWI transaction
-        tasks__resume: packed enum(u1) {
+        tasks_resume: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -15431,7 +15431,7 @@ pub const twi1 = struct {
         _unused1: u31 = 0,
     };
     ///Resume TWI transaction
-    pub const tasks__resume = RegisterRW(void, tasks__resume_val).init(0x40004000 + 0x020);
+    pub const tasks_resume = RegisterRW(void, tasks_resume_val).init(0x40004000 + 0x020);
 
     //////////////////////////
     ///EVENTS_STOPPED
@@ -15483,10 +15483,10 @@ pub const twi1 = struct {
 
     //////////////////////////
     ///EVENTS_ERROR
-    const events__error_val = packed struct {
+    const events_error_val = packed struct {
         ///EVENTS_ERROR [0:0]
         ///TWI error
-        events__error: packed enum(u1) {
+        events_error: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -15495,7 +15495,7 @@ pub const twi1 = struct {
         _unused1: u31 = 0,
     };
     ///TWI error
-    pub const events__error = Register(events__error_val).init(0x40004000 + 0x124);
+    pub const events_error = Register(events_error_val).init(0x40004000 + 0x124);
 
     //////////////////////////
     ///EVENTS_BB
@@ -15515,10 +15515,10 @@ pub const twi1 = struct {
 
     //////////////////////////
     ///EVENTS_SUSPENDED
-    const events__suspended_val = packed struct {
+    const events_suspended_val = packed struct {
         ///EVENTS_SUSPENDED [0:0]
         ///TWI entered the suspended state
-        events__suspended: packed enum(u1) {
+        events_suspended: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -15527,14 +15527,14 @@ pub const twi1 = struct {
         _unused1: u31 = 0,
     };
     ///TWI entered the suspended state
-    pub const events__suspended = Register(events__suspended_val).init(0x40004000 + 0x148);
+    pub const events_suspended = Register(events_suspended_val).init(0x40004000 + 0x148);
 
     //////////////////////////
     ///SHORTS
     const shorts_val = packed struct {
         ///BB_SUSPEND [0:0]
         ///Shortcut between event BB and task SUSPEND
-        bb__suspend: packed enum(u1) {
+        bb_suspend: packed enum(u1) {
             ///Disable shortcut
             disabled = 0,
             ///Enable shortcut
@@ -15603,7 +15603,7 @@ pub const twi1 = struct {
         _unused15: u3 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to enable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -15654,7 +15654,7 @@ pub const twi1 = struct {
         _unused15: u3 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to enable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Enable
             set = 1,
             _zero = 0,
@@ -15714,7 +15714,7 @@ pub const twi1 = struct {
         _unused15: u3 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to disable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -15765,7 +15765,7 @@ pub const twi1 = struct {
         _unused15: u3 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to disable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Disable
             clear = 1,
             _zero = 0,
@@ -15777,7 +15777,7 @@ pub const twi1 = struct {
 
     //////////////////////////
     ///ERRORSRC
-    const _errorsrc_val_read = packed struct {
+    const errorsrc_val_read = packed struct {
         ///OVERRUN [0:0]
         ///Overrun error
         overrun: packed enum(u1) {
@@ -15804,7 +15804,7 @@ pub const twi1 = struct {
         } = .not_present,
         _unused3: u29 = 0,
     };
-    const _errorsrc_val_write = packed struct {
+    const errorsrc_val_write = packed struct {
         ///OVERRUN [0:0]
         ///Overrun error
         overrun: u1 = 0,
@@ -15817,7 +15817,7 @@ pub const twi1 = struct {
         _unused3: u29 = 0,
     };
     ///Error source
-    pub const _errorsrc = RegisterRW(_errorsrc_val_read, _errorsrc_val_write).init(0x40004000 + 0x4C4);
+    pub const errorsrc = RegisterRW(errorsrc_val_read, errorsrc_val_write).init(0x40004000 + 0x4C4);
 
     //////////////////////////
     ///ENABLE
@@ -15937,10 +15937,10 @@ pub const twim1 = struct {
 
     //////////////////////////
     ///TASKS_SUSPEND
-    const tasks__suspend_val = packed struct {
+    const tasks_suspend_val = packed struct {
         ///TASKS_SUSPEND [0:0]
         ///Suspend TWI transaction
-        tasks__suspend: packed enum(u1) {
+        tasks_suspend: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -15948,14 +15948,14 @@ pub const twim1 = struct {
         _unused1: u31 = 0,
     };
     ///Suspend TWI transaction
-    pub const tasks__suspend = RegisterRW(void, tasks__suspend_val).init(0x40004000 + 0x01C);
+    pub const tasks_suspend = RegisterRW(void, tasks_suspend_val).init(0x40004000 + 0x01C);
 
     //////////////////////////
     ///TASKS_RESUME
-    const tasks__resume_val = packed struct {
+    const tasks_resume_val = packed struct {
         ///TASKS_RESUME [0:0]
         ///Resume TWI transaction
-        tasks__resume: packed enum(u1) {
+        tasks_resume: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -15963,7 +15963,7 @@ pub const twim1 = struct {
         _unused1: u31 = 0,
     };
     ///Resume TWI transaction
-    pub const tasks__resume = RegisterRW(void, tasks__resume_val).init(0x40004000 + 0x020);
+    pub const tasks_resume = RegisterRW(void, tasks_resume_val).init(0x40004000 + 0x020);
 
     //////////////////////////
     ///EVENTS_STOPPED
@@ -15983,10 +15983,10 @@ pub const twim1 = struct {
 
     //////////////////////////
     ///EVENTS_ERROR
-    const events__error_val = packed struct {
+    const events_error_val = packed struct {
         ///EVENTS_ERROR [0:0]
         ///TWI error
-        events__error: packed enum(u1) {
+        events_error: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -15995,14 +15995,14 @@ pub const twim1 = struct {
         _unused1: u31 = 0,
     };
     ///TWI error
-    pub const events__error = Register(events__error_val).init(0x40004000 + 0x124);
+    pub const events_error = Register(events_error_val).init(0x40004000 + 0x124);
 
     //////////////////////////
     ///EVENTS_SUSPENDED
-    const events__suspended_val = packed struct {
+    const events_suspended_val = packed struct {
         ///EVENTS_SUSPENDED [0:0]
         ///Last byte has been sent out after the SUSPEND task has been issued, TWI traffic is now suspended.
-        events__suspended: packed enum(u1) {
+        events_suspended: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -16011,7 +16011,7 @@ pub const twim1 = struct {
         _unused1: u31 = 0,
     };
     ///Last byte has been sent out after the SUSPEND task has been issued, TWI traffic is now suspended.
-    pub const events__suspended = Register(events__suspended_val).init(0x40004000 + 0x148);
+    pub const events_suspended = Register(events_suspended_val).init(0x40004000 + 0x148);
 
     //////////////////////////
     ///EVENTS_RXSTARTED
@@ -16091,7 +16091,7 @@ pub const twim1 = struct {
         } = .disabled,
         ///LASTTX_SUSPEND [8:8]
         ///Shortcut between event LASTTX and task SUSPEND
-        lasttx__suspend: packed enum(u1) {
+        lasttx_suspend: packed enum(u1) {
             ///Disable shortcut
             disabled = 0,
             ///Enable shortcut
@@ -16115,7 +16115,7 @@ pub const twim1 = struct {
         } = .disabled,
         ///LASTRX_SUSPEND [11:11]
         ///Shortcut between event LASTRX and task SUSPEND
-        lastrx__suspend: packed enum(u1) {
+        lastrx_suspend: packed enum(u1) {
             ///Disable shortcut
             disabled = 0,
             ///Enable shortcut
@@ -16158,7 +16158,7 @@ pub const twim1 = struct {
         _unused10: u8 = 0,
         ///SUSPENDED [18:18]
         ///Enable or disable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Disable
             disabled = 0,
             ///Enable
@@ -16226,7 +16226,7 @@ pub const twim1 = struct {
         _unused10: u8 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to enable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -16287,7 +16287,7 @@ pub const twim1 = struct {
         _unused10: u8 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to enable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Enable
             set = 1,
             _zero = 0,
@@ -16350,7 +16350,7 @@ pub const twim1 = struct {
         _unused10: u8 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to disable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -16411,7 +16411,7 @@ pub const twim1 = struct {
         _unused10: u8 = 0,
         ///SUSPENDED [18:18]
         ///Write '1' to disable interrupt for event SUSPENDED
-        _suspended: packed enum(u1) {
+        suspended: packed enum(u1) {
             ///Disable
             clear = 1,
             _zero = 0,
@@ -16452,7 +16452,7 @@ pub const twim1 = struct {
 
     //////////////////////////
     ///ERRORSRC
-    const _errorsrc_val = packed struct {
+    const errorsrc_val = packed struct {
         ///OVERRUN [0:0]
         ///Overrun error
         overrun: packed enum(u1) {
@@ -16480,7 +16480,7 @@ pub const twim1 = struct {
         _unused3: u29 = 0,
     };
     ///Error source
-    pub const _errorsrc = Register(_errorsrc_val).init(0x40004000 + 0x4C4);
+    pub const errorsrc = Register(errorsrc_val).init(0x40004000 + 0x4C4);
 
     //////////////////////////
     ///ENABLE
@@ -16548,10 +16548,10 @@ pub const twis1 = struct {
 
     //////////////////////////
     ///TASKS_SUSPEND
-    const tasks__suspend_val = packed struct {
+    const tasks_suspend_val = packed struct {
         ///TASKS_SUSPEND [0:0]
         ///Suspend TWI transaction
-        tasks__suspend: packed enum(u1) {
+        tasks_suspend: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -16559,14 +16559,14 @@ pub const twis1 = struct {
         _unused1: u31 = 0,
     };
     ///Suspend TWI transaction
-    pub const tasks__suspend = RegisterRW(void, tasks__suspend_val).init(0x40004000 + 0x01C);
+    pub const tasks_suspend = RegisterRW(void, tasks_suspend_val).init(0x40004000 + 0x01C);
 
     //////////////////////////
     ///TASKS_RESUME
-    const tasks__resume_val = packed struct {
+    const tasks_resume_val = packed struct {
         ///TASKS_RESUME [0:0]
         ///Resume TWI transaction
-        tasks__resume: packed enum(u1) {
+        tasks_resume: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -16574,7 +16574,7 @@ pub const twis1 = struct {
         _unused1: u31 = 0,
     };
     ///Resume TWI transaction
-    pub const tasks__resume = RegisterRW(void, tasks__resume_val).init(0x40004000 + 0x020);
+    pub const tasks_resume = RegisterRW(void, tasks_resume_val).init(0x40004000 + 0x020);
 
     //////////////////////////
     ///TASKS_PREPARERX
@@ -16624,10 +16624,10 @@ pub const twis1 = struct {
 
     //////////////////////////
     ///EVENTS_ERROR
-    const events__error_val = packed struct {
+    const events_error_val = packed struct {
         ///EVENTS_ERROR [0:0]
         ///TWI error
-        events__error: packed enum(u1) {
+        events_error: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -16636,7 +16636,7 @@ pub const twis1 = struct {
         _unused1: u31 = 0,
     };
     ///TWI error
-    pub const events__error = Register(events__error_val).init(0x40004000 + 0x124);
+    pub const events_error = Register(events_error_val).init(0x40004000 + 0x124);
 
     //////////////////////////
     ///EVENTS_RXSTARTED
@@ -16708,7 +16708,7 @@ pub const twis1 = struct {
         _unused0: u13 = 0,
         ///WRITE_SUSPEND [13:13]
         ///Shortcut between event WRITE and task SUSPEND
-        write__suspend: packed enum(u1) {
+        write_suspend: packed enum(u1) {
             ///Disable shortcut
             disabled = 0,
             ///Enable shortcut
@@ -16716,7 +16716,7 @@ pub const twis1 = struct {
         } = .disabled,
         ///READ_SUSPEND [14:14]
         ///Shortcut between event READ and task SUSPEND
-        read__suspend: packed enum(u1) {
+        read_suspend: packed enum(u1) {
             ///Disable shortcut
             disabled = 0,
             ///Enable shortcut
@@ -17007,7 +17007,7 @@ pub const twis1 = struct {
 
     //////////////////////////
     ///ERRORSRC
-    const _errorsrc_val = packed struct {
+    const errorsrc_val = packed struct {
         ///OVERFLOW [0:0]
         ///RX buffer overflow detected, and prevented
         overflow: packed enum(u1) {
@@ -17036,7 +17036,7 @@ pub const twis1 = struct {
         _unused4: u28 = 0,
     };
     ///Error source
-    pub const _errorsrc = Register(_errorsrc_val).init(0x40004000 + 0x4D0);
+    pub const errorsrc = Register(errorsrc_val).init(0x40004000 + 0x4D0);
 
     //////////////////////////
     ///MATCH
@@ -17334,10 +17334,10 @@ pub const nfct = struct {
 
     //////////////////////////
     ///EVENTS_ERROR
-    const events__error_val = packed struct {
+    const events_error_val = packed struct {
         ///EVENTS_ERROR [0:0]
         ///NFC error reported. The ERRORSTATUS register contains details on the source of the error.
-        events__error: packed enum(u1) {
+        events_error: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -17346,14 +17346,14 @@ pub const nfct = struct {
         _unused1: u31 = 0,
     };
     ///NFC error reported. The ERRORSTATUS register contains details on the source of the error.
-    pub const events__error = Register(events__error_val).init(0x40005000 + 0x11C);
+    pub const events_error = Register(events_error_val).init(0x40005000 + 0x11C);
 
     //////////////////////////
     ///EVENTS_RXERROR
-    const events_rx_error_val = packed struct {
+    const events_rxerror_val = packed struct {
         ///EVENTS_RXERROR [0:0]
         ///NFC RX frame error reported. The FRAMESTATUS.RX register contains details on the source of the error.
-        events_rx_error: packed enum(u1) {
+        events_rxerror: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -17362,7 +17362,7 @@ pub const nfct = struct {
         _unused1: u31 = 0,
     };
     ///NFC RX frame error reported. The FRAMESTATUS.RX register contains details on the source of the error.
-    pub const events_rx_error = Register(events_rx_error_val).init(0x40005000 + 0x128);
+    pub const events_rxerror = Register(events_rxerror_val).init(0x40005000 + 0x128);
 
     //////////////////////////
     ///EVENTS_ENDRX
@@ -17563,7 +17563,7 @@ pub const nfct = struct {
         _unused8: u2 = 0,
         ///RXERROR [10:10]
         ///Enable or disable interrupt for event RXERROR
-        rx_error: packed enum(u1) {
+        rxerror: packed enum(u1) {
             ///Disable
             disabled = 0,
             ///Enable
@@ -17694,7 +17694,7 @@ pub const nfct = struct {
         _unused8: u2 = 0,
         ///RXERROR [10:10]
         ///Write '1' to enable interrupt for event RXERROR
-        rx_error: packed enum(u1) {
+        rxerror: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -17812,7 +17812,7 @@ pub const nfct = struct {
         _unused8: u2 = 0,
         ///RXERROR [10:10]
         ///Write '1' to enable interrupt for event RXERROR
-        rx_error: packed enum(u1) {
+        rxerror: packed enum(u1) {
             ///Enable
             set = 1,
             _zero = 0,
@@ -17936,7 +17936,7 @@ pub const nfct = struct {
         _unused8: u2 = 0,
         ///RXERROR [10:10]
         ///Write '1' to disable interrupt for event RXERROR
-        rx_error: packed enum(u1) {
+        rxerror: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -18054,7 +18054,7 @@ pub const nfct = struct {
         _unused8: u2 = 0,
         ///RXERROR [10:10]
         ///Write '1' to disable interrupt for event RXERROR
-        rx_error: packed enum(u1) {
+        rxerror: packed enum(u1) {
             ///Disable
             clear = 1,
             _zero = 0,
@@ -18110,14 +18110,14 @@ pub const nfct = struct {
 
     //////////////////////////
     ///ERRORSTATUS
-    const _errorstatus_val = packed struct {
+    const errorstatus_val = packed struct {
         ///FRAMEDELAYTIMEOUT [0:0]
         ///No STARTTX task triggered before expiration of the time set in FRAMEDELAYMAX
         framedelaytimeout: u1 = 0,
         _unused1: u31 = 0,
     };
     ///NFC Error Status register
-    pub const _errorstatus = Register(_errorstatus_val).init(0x40005000 + 0x404);
+    pub const errorstatus = Register(errorstatus_val).init(0x40005000 + 0x404);
 
     //////////////////////////
     ///NFCTAGSTATE
@@ -18147,8 +18147,8 @@ pub const nfct = struct {
     ///SLEEPSTATE
     const sleepstate_val = packed struct {
         ///SLEEPSTATE [0:0]
-        ///Reflects the sleep state during automatic collision resolution. Set to IDLE
-        ///by a GOIDLE task. Set to SLEEP_A when a valid SLEEP_REQ frame is received or by a
+        ///Reflects the sleep state during automatic collision resolution. Set to IDLE 
+        ///by a GOIDLE task. Set to SLEEP_A when a valid SLEEP_REQ frame is received or by a 
         ///GOSLEEP task.
         sleepstate: packed enum(u1) {
             ///State is IDLE.
@@ -22481,10 +22481,10 @@ pub const ecb = struct {
 
     //////////////////////////
     ///EVENTS_ERRORECB
-    const events__errorecb_val = packed struct {
+    const events_errorecb_val = packed struct {
         ///EVENTS_ERRORECB [0:0]
         ///ECB block encrypt aborted because of a STOPECB task or due to an error
-        events__errorecb: packed enum(u1) {
+        events_errorecb: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -22493,7 +22493,7 @@ pub const ecb = struct {
         _unused1: u31 = 0,
     };
     ///ECB block encrypt aborted because of a STOPECB task or due to an error
-    pub const events__errorecb = Register(events__errorecb_val).init(0x4000E000 + 0x104);
+    pub const events_errorecb = Register(events_errorecb_val).init(0x4000E000 + 0x104);
 
     //////////////////////////
     ///INTENSET
@@ -22508,7 +22508,7 @@ pub const ecb = struct {
         } = .disabled,
         ///ERRORECB [1:1]
         ///Write '1' to enable interrupt for event ERRORECB
-        _errorecb: packed enum(u1) {
+        errorecb: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -22526,7 +22526,7 @@ pub const ecb = struct {
         } = ._zero,
         ///ERRORECB [1:1]
         ///Write '1' to enable interrupt for event ERRORECB
-        _errorecb: packed enum(u1) {
+        errorecb: packed enum(u1) {
             ///Enable
             set = 1,
             _zero = 0,
@@ -22549,7 +22549,7 @@ pub const ecb = struct {
         } = .disabled,
         ///ERRORECB [1:1]
         ///Write '1' to disable interrupt for event ERRORECB
-        _errorecb: packed enum(u1) {
+        errorecb: packed enum(u1) {
             ///Read: Disabled
             disabled = 0,
             ///Read: Enabled
@@ -22567,7 +22567,7 @@ pub const ecb = struct {
         } = ._zero,
         ///ERRORECB [1:1]
         ///Write '1' to disable interrupt for event ERRORECB
-        _errorecb: packed enum(u1) {
+        errorecb: packed enum(u1) {
             ///Disable
             clear = 1,
             _zero = 0,
@@ -22947,10 +22947,10 @@ pub const ccm = struct {
 
     //////////////////////////
     ///EVENTS_ERROR
-    const events__error_val = packed struct {
+    const events_error_val = packed struct {
         ///EVENTS_ERROR [0:0]
         ///Deprecated field -  CCM error event
-        events__error: packed enum(u1) {
+        events_error: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -22959,7 +22959,7 @@ pub const ccm = struct {
         _unused1: u31 = 0,
     };
     ///Deprecated register - CCM error event
-    pub const events__error = Register(events__error_val).init(0x4000F000 + 0x108);
+    pub const events_error = Register(events_error_val).init(0x4000F000 + 0x108);
 
     //////////////////////////
     ///SHORTS
@@ -36247,10 +36247,10 @@ pub const spim2 = struct {
 
     //////////////////////////
     ///TASKS_SUSPEND
-    const tasks__suspend_val = packed struct {
+    const tasks_suspend_val = packed struct {
         ///TASKS_SUSPEND [0:0]
         ///Suspend SPI transaction
-        tasks__suspend: packed enum(u1) {
+        tasks_suspend: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -36258,14 +36258,14 @@ pub const spim2 = struct {
         _unused1: u31 = 0,
     };
     ///Suspend SPI transaction
-    pub const tasks__suspend = RegisterRW(void, tasks__suspend_val).init(0x40023000 + 0x01C);
+    pub const tasks_suspend = RegisterRW(void, tasks_suspend_val).init(0x40023000 + 0x01C);
 
     //////////////////////////
     ///TASKS_RESUME
-    const tasks__resume_val = packed struct {
+    const tasks_resume_val = packed struct {
         ///TASKS_RESUME [0:0]
         ///Resume SPI transaction
-        tasks__resume: packed enum(u1) {
+        tasks_resume: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -36273,7 +36273,7 @@ pub const spim2 = struct {
         _unused1: u31 = 0,
     };
     ///Resume SPI transaction
-    pub const tasks__resume = RegisterRW(void, tasks__resume_val).init(0x40023000 + 0x020);
+    pub const tasks_resume = RegisterRW(void, tasks_resume_val).init(0x40023000 + 0x020);
 
     //////////////////////////
     ///EVENTS_STOPPED
@@ -40284,10 +40284,10 @@ pub const uarte1 = struct {
 
     //////////////////////////
     ///EVENTS_ERROR
-    const events__error_val = packed struct {
+    const events_error_val = packed struct {
         ///EVENTS_ERROR [0:0]
         ///Error detected
-        events__error: packed enum(u1) {
+        events_error: packed enum(u1) {
             ///Event not generated
             not_generated = 0,
             ///Event generated
@@ -40296,7 +40296,7 @@ pub const uarte1 = struct {
         _unused1: u31 = 0,
     };
     ///Error detected
-    pub const events__error = Register(events__error_val).init(0x40028000 + 0x124);
+    pub const events_error = Register(events_error_val).init(0x40028000 + 0x124);
 
     //////////////////////////
     ///EVENTS_RXTO
@@ -40862,7 +40862,7 @@ pub const uarte1 = struct {
 
     //////////////////////////
     ///ERRORSRC
-    const _errorsrc_val_read = packed struct {
+    const errorsrc_val_read = packed struct {
         ///OVERRUN [0:0]
         ///Overrun error
         overrun: packed enum(u1) {
@@ -40897,7 +40897,7 @@ pub const uarte1 = struct {
         } = .not_present,
         _unused4: u28 = 0,
     };
-    const _errorsrc_val_write = packed struct {
+    const errorsrc_val_write = packed struct {
         ///OVERRUN [0:0]
         ///Overrun error
         overrun: u1 = 0,
@@ -40913,7 +40913,7 @@ pub const uarte1 = struct {
         _unused4: u28 = 0,
     };
     ///Error source Note : this register is read / write one to clear.
-    pub const _errorsrc = RegisterRW(_errorsrc_val_read, _errorsrc_val_write).init(0x40028000 + 0x480);
+    pub const errorsrc = RegisterRW(errorsrc_val_read, errorsrc_val_write).init(0x40028000 + 0x480);
 
     //////////////////////////
     ///ENABLE
@@ -42249,10 +42249,10 @@ pub const spim3 = struct {
 
     //////////////////////////
     ///TASKS_SUSPEND
-    const tasks__suspend_val = packed struct {
+    const tasks_suspend_val = packed struct {
         ///TASKS_SUSPEND [0:0]
         ///Suspend SPI transaction
-        tasks__suspend: packed enum(u1) {
+        tasks_suspend: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -42260,14 +42260,14 @@ pub const spim3 = struct {
         _unused1: u31 = 0,
     };
     ///Suspend SPI transaction
-    pub const tasks__suspend = RegisterRW(void, tasks__suspend_val).init(0x4002F000 + 0x01C);
+    pub const tasks_suspend = RegisterRW(void, tasks_suspend_val).init(0x4002F000 + 0x01C);
 
     //////////////////////////
     ///TASKS_RESUME
-    const tasks__resume_val = packed struct {
+    const tasks_resume_val = packed struct {
         ///TASKS_RESUME [0:0]
         ///Resume SPI transaction
-        tasks__resume: packed enum(u1) {
+        tasks_resume: packed enum(u1) {
             ///Trigger task
             trigger = 1,
             _zero = 0,
@@ -42275,7 +42275,7 @@ pub const spim3 = struct {
         _unused1: u31 = 0,
     };
     ///Resume SPI transaction
-    pub const tasks__resume = RegisterRW(void, tasks__resume_val).init(0x4002F000 + 0x020);
+    pub const tasks_resume = RegisterRW(void, tasks_resume_val).init(0x4002F000 + 0x020);
 
     //////////////////////////
     ///EVENTS_STOPPED

@@ -64,7 +64,7 @@
       (str/replace #"^([0-9])" "_$1")
 
       ;;zig reserved words
-      (str/replace #"(?i)(fn|error|break|suspend|resume|align)" "_$1")
+      (str/replace #"(?i)^(fn|error|break|suspend|resume|align|or)$" "_$1")
 
       ;;camel case to underscores
       (str/replace #"([a-z])([A-Z])" "$1_$2")
