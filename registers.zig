@@ -1,3 +1,8 @@
+pub const PERIPHERAL_BASE = 0x40000000;
+
+// This is not even part of the SVD
+pub const PERIPHERAL_BITBAND_BASE = 0x42000000;
+
 pub fn Register(comptime R: type) type {
     return RegisterRW(R, R);
 }
@@ -55,6 +60,36 @@ pub fn RegisterRW(comptime Read: type, comptime Write: type) type {
 
         pub fn default_write_value(self: Self) Write {
             return Write{};
+        }
+
+        /// Get pointer to bit-banded peripheral register corresponding to the field
+        /// Assumes that self.raw_ptr is within peripheral memory range
+        /// Reference:
+        /// Cortex-M3 Technical Reference Manual - 3.7 Bit Banding
+        pub fn bitband_ptr(comptime self: Self, comptime field: []const u8) *volatile u32 {
+            comptime {
+                const field_type = @TypeOf(@field(Write{}, field));
+                if (field_type != u1) {
+                    @compileError("Can only bit-band access fields of type u1. Tried to access '" ++ field ++ ": " ++ @typeName(field_type) ++ "'");
+                }
+            }
+            const reg_addr: usize = @ptrToInt(self.raw_ptr);
+            const bit_offset = @bitOffsetOf(Write, field);
+            const reg_offset = reg_addr - PERIPHERAL_BASE;
+            comptime const bitband_addr = PERIPHERAL_BITBAND_BASE + reg_offset * 32 + bit_offset * 4;
+            return @intToPtr(*volatile u32, bitband_addr);
+        }
+
+        /// Bit-banded write
+        pub fn write_bit(comptime self: Self, comptime field: []const u8, value: u1) void {
+            const ptr = comptime self.bitband_ptr(field);
+            ptr.* = value;
+        }
+
+        /// Bit-banded read
+        pub fn read_bit(comptime self: Self, comptime field: []const u8) u1 {
+            const ptr = comptime self.bitband_ptr(field);
+            return @intCast(u1, ptr.*);
         }
     };
 }
