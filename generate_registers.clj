@@ -45,14 +45,16 @@
                       :enumeratedValue)]
          (-> (select-children-tag-content e [:name :description :value])
              (update :value (fn [s]
-                              (if (re-matches #"^0(x|X)" s)
+                              (if (re-matches #"^0(x|X).*" s)
                                 s
                                 (Integer/parseInt s))))))))
 
 
 (defn ->comment
   [s]
-  (str/replace s #"(?m)^\s*" "///"))
+  (if (nil? s) 
+  	 ""
+    (str/replace s #"(?m)^\s*" "// ")))
 
 
 (defn ->identifier
@@ -197,7 +199,10 @@
                      (str "RegisterRW(" type-name "_read, " type-name "_write)")
 
                      (and (= access "read-write") (not separate-read-write-types?))
-                     (str "Register(" type-name ")"))
+                     (str "Register(" type-name ")")
+
+                     ;; If access is not defined, default to RW
+                     :else (str "Register(" type-name ")"))
 
                    (if (and dim dimIncrement)
                      (let [dim (hex->int dim)
