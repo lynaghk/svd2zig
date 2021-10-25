@@ -98,7 +98,7 @@
 
         ;;comment
         (println (->comment (str name " [" lsb ":" msb "]")))
-        (println (->comment description))
+        (when description (println (->comment description)))
 
         ;;emit anon struct of values or raw integer for field.
         ;;both must have defaults so the user doesn't need to specify all fields every time they write to a register
@@ -113,7 +113,7 @@
                 (println "{")
 
                 (doseq [{:keys [name description value]} enums]
-                  (println (->comment description))
+                  (when description (println (->comment description)))
                   (println (->identifier name) "=" value ","))
 
                 (when-not default-enum
@@ -147,7 +147,7 @@
   [p]
   (with-out-str
     (let [{:keys [name description baseAddress registers]} p]
-      (println (->comment description))
+      (when description (println (->comment description)))
       (println "pub const" (->identifier name) "= struct{")
 
       (doseq [{:keys [name description addressOffset resetValue access fields dim dimIncrement] :as register} registers]
@@ -182,7 +182,7 @@
           ;;;;;;;;;;;;;;
           ;;Register
 
-          (println (->comment description))
+          (when description (println (->comment description)))
           (println "pub const" register-name "="
 
                    (cond
