@@ -5042,7 +5042,7 @@ pub const spi1 = struct {
         _unused13: u19 = 0,
     };
     ///status register
-    pub const sr = nil.init(0x40013000 + 0x8);
+    pub const sr = Register(sr_val).init(0x40013000 + 0x8);
 
     //////////////////////////
     ///DR
@@ -5575,7 +5575,7 @@ pub const spi2 = struct {
         _unused13: u19 = 0,
     };
     ///status register
-    pub const sr = nil.init(0x40003800 + 0x8);
+    pub const sr = Register(sr_val).init(0x40003800 + 0x8);
 
     //////////////////////////
     ///DR
@@ -5801,7 +5801,7 @@ pub const pwr = struct {
         _unused15: u17 = 0,
     };
     ///power control/status register
-    pub const csr = nil.init(0x40007000 + 0x4);
+    pub const csr = Register(csr_val).init(0x40007000 + 0x4);
 };
 
 ///Inter-integrated circuit
@@ -6011,7 +6011,7 @@ pub const i2c1 = struct {
         _unused24: u8 = 0,
     };
     ///Control register 1
-    pub const cr1 = nil.init(0x40005400 + 0x0);
+    pub const cr1 = Register(cr1_val).init(0x40005400 + 0x0);
 
     //////////////////////////
     ///CR2
@@ -6389,7 +6389,7 @@ pub const i2c1 = struct {
         _unused24: u8 = 0,
     };
     ///Interrupt and Status register
-    pub const isr = nil.init(0x40005400 + 0x18);
+    pub const isr = Register(isr_val).init(0x40005400 + 0x18);
 
     //////////////////////////
     ///ICR
@@ -6709,7 +6709,7 @@ pub const i2c2 = struct {
         _unused24: u8 = 0,
     };
     ///Control register 1
-    pub const cr1 = nil.init(0x40005800 + 0x0);
+    pub const cr1 = Register(cr1_val).init(0x40005800 + 0x0);
 
     //////////////////////////
     ///CR2
@@ -7087,7 +7087,7 @@ pub const i2c2 = struct {
         _unused24: u8 = 0,
     };
     ///Interrupt and Status register
-    pub const isr = nil.init(0x40005800 + 0x18);
+    pub const isr = Register(isr_val).init(0x40005800 + 0x18);
 
     //////////////////////////
     ///ICR
@@ -11049,7 +11049,7 @@ pub const rcc = struct {
         _unused26: u6 = 0,
     };
     ///Clock control register
-    pub const cr = nil.init(0x40021000 + 0x0);
+    pub const cr = Register(cr_val).init(0x40021000 + 0x0);
 
     //////////////////////////
     ///CFGR
@@ -11150,7 +11150,7 @@ pub const rcc = struct {
     };
     ///Clock configuration register
     ///(RCC_CFGR)
-    pub const cfgr = nil.init(0x40021000 + 0x4);
+    pub const cfgr = Register(cfgr_val).init(0x40021000 + 0x4);
 
     //////////////////////////
     ///CIR
@@ -11332,7 +11332,7 @@ pub const rcc = struct {
     };
     ///Clock interrupt register
     ///(RCC_CIR)
-    pub const cir = nil.init(0x40021000 + 0x8);
+    pub const cir = Register(cir_val).init(0x40021000 + 0x8);
 
     //////////////////////////
     ///APB2RSTR
@@ -11680,7 +11680,7 @@ pub const rcc = struct {
     };
     ///Backup domain control register
     ///(RCC_BDCR)
-    pub const bdcr = nil.init(0x40021000 + 0x20);
+    pub const bdcr = Register(bdcr_val).init(0x40021000 + 0x20);
 
     //////////////////////////
     ///CSR
@@ -11780,7 +11780,7 @@ pub const rcc = struct {
     };
     ///Control/status register
     ///(RCC_CSR)
-    pub const csr = nil.init(0x40021000 + 0x24);
+    pub const csr = Register(csr_val).init(0x40021000 + 0x24);
 
     //////////////////////////
     ///AHBRSTR
@@ -11977,7 +11977,7 @@ pub const rcc = struct {
         hsi48cal: u8 = 0,
     };
     ///Clock control register 2
-    pub const cr2 = nil.init(0x40021000 + 0x34);
+    pub const cr2 = Register(cr2_val).init(0x40021000 + 0x34);
 };
 
 ///System configuration controller
@@ -17862,7 +17862,7 @@ pub const rtc = struct {
         _unused24: u8 = 0,
     };
     ///control register
-    pub const cr = nil.init(0x40002800 + 0x8);
+    pub const cr = Register(cr_val).init(0x40002800 + 0x8);
 
     //////////////////////////
     ///ISR
@@ -17911,7 +17911,7 @@ pub const rtc = struct {
     };
     ///initialization and status
     ///register
-    pub const isr = nil.init(0x40002800 + 0xC);
+    pub const isr = Register(isr_val).init(0x40002800 + 0xC);
 
     //////////////////////////
     ///PRER
@@ -19563,7 +19563,7 @@ pub const flash = struct {
         _unused6: u26 = 0,
     };
     ///Flash access control register
-    pub const acr = nil.init(0x40022000 + 0x0);
+    pub const acr = Register(acr_val).init(0x40022000 + 0x0);
 
     //////////////////////////
     ///KEYR
@@ -19627,7 +19627,7 @@ pub const flash = struct {
         _unused6: u26 = 0,
     };
     ///Flash status register
-    pub const sr = nil.init(0x40022000 + 0xC);
+    pub const sr = Register(sr_val).init(0x40022000 + 0xC);
 
     //////////////////////////
     ///CR
@@ -20724,7 +20724,7 @@ pub const usb = struct {
         _unused16: u16 = 0,
     };
     ///interrupt status register
-    pub const istr = nil.init(0x40005C00 + 0x44);
+    pub const istr = Register(istr_val).init(0x40005C00 + 0x44);
 
     //////////////////////////
     ///FNR
@@ -20823,7 +20823,7 @@ pub const usb = struct {
     };
     ///LPM control and status
     ///register
-    pub const lpmcsr = nil.init(0x40005C00 + 0x54);
+    pub const lpmcsr = Register(lpmcsr_val).init(0x40005C00 + 0x54);
 
     //////////////////////////
     ///BCDR
@@ -20912,7 +20912,7 @@ pub const usb = struct {
         _unused16: u16 = 0,
     };
     ///Battery charging detector
-    pub const bcdr = nil.init(0x40005C00 + 0x58);
+    pub const bcdr = Register(bcdr_val).init(0x40005C00 + 0x58);
 };
 
 ///System control block

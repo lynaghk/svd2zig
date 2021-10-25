@@ -196,7 +196,8 @@
                      (and (= access "read-write") separate-read-write-types?)
                      (str "RegisterRW(" type-name "_read, " type-name "_write)")
 
-                     (and (= access "read-write") (not separate-read-write-types?))
+                     (or (and (= access "read-write") (not separate-read-write-types?))
+                         (nil? access))
                      (str "Register(" type-name ")"))
 
                    (if (and dim dimIncrement)
