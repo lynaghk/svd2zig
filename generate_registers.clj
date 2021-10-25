@@ -45,7 +45,7 @@
                       :enumeratedValue)]
          (-> (select-children-tag-content e [:name :description :value])
              (update :value (fn [s]
-                              (if (re-matches #"^0(x|X)" s)
+                              (if (re-find #"^0(x|X)" s)
                                 s
                                 (Integer/parseInt s))))))))
 
